@@ -1,8 +1,0 @@
-Roue hasard : soit faire 1 tour par adresse mail et chaque tour = un lot, soit stocker les pseudos dans un json, faire un scoreboard et les 3 premiers gagnent des lots
-
-Snake : mettre une vitesse pour chaque lot, plus un lot coute cher plus le snake va vite donc plus dur a attraper
-
-jeu style aimlabs : des ronds qui apparaissent et disparraissent a la suite un peu partout, tu cliques dessus = +1 point, scoreboard et le top 3 à un lot
-
-Flappy bird : flappy bird classic mais des icones de lots apparaissent à des endroits random et il faut réussir a les attraper sans mourir
-
