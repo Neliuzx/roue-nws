@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu NWS</title>
+    <link rel="stylesheet" href="./style.css"/>
+    <script src="/index.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+</head>
+<body>
+
+    <h1 id="h1">La grande roue de la <br>NWS !</h1>
+
+    <main>
+        <div class="roulette">
+            <div class="roulette-wrapper">
+                <img src="/assets/roulette_img.png" id="roulette-img" class="rotate-slow" alt="Image de la roulette">
+                <img class="pointeur" src="https://www.ours-noir.fr/images/jeux/pointeur.png" alt="">
+            </div>
+        </div>
+
+        <div class="formulaire">
+            <div class="titre-form rouge">A vous de jouer !</div>
+            <div class="line-title"></div>
+
+            <form class="form-contact">
+                <input type="email" id="mailinput" required>
+                <button id="bouton" type="submit">Faites tourner la roue !</button>
+            </form>
+        </div>
+    </main>
+
+    <dialog id="overlay-lot" class="overlay-lot" >
+        <h2 id="overlay-titre" class="rouge">Bravo !</h2>
+        <p class="overlay-texte">Vous avez gagné</p>
+        <p id="lot-nom" class="lot-nom"></p>
+        <button id="fermer-overlay" type="button">Fermer</button>
+    </dialog>
+</body>
+</html>
+
+        
