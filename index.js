@@ -5,18 +5,22 @@ const form = bouton.closest('form')
 const dialog = document.getElementById('overlay-lot')
 const afficheLot = document.getElementById('lot-nom')
 const btnClose = document.getElementById('fermer-overlay')
+const overlayTitre = document.getElementById('overlay-titre')
+const overlayTxt = document.getElementById('overlay-texte')
+
+
 mailInput.placeholder = "Votre adresse e-mail"
 
 const lots = [
-    { nom: "1 café offert" },
-    { nom: "1 café offert" },
-    { nom: "1 café offert" },
-    { nom: "1 café offert" },
-    { nom: "1 café offert" },
-    { nom: "1 café offert" },
-    { nom: "1 café offert" },
-    { nom: "1 café offert" }
-]
+    { nom: "Perdu", minAngle: 67.5, maxAngle: 112.5 },         
+    { nom: "1 café offert", minAngle: 22.5, maxAngle: 67.5 },  
+    { nom: "1 lot bleu", minAngle: 337.5, maxAngle: 22.5 },    
+    { nom: "1 café offert", minAngle: 292.5, maxAngle: 337.5 },
+    { nom: "Perdu", minAngle: 247.5, maxAngle: 292.5 },      
+    { nom: "1 café offert", minAngle: 202.5, maxAngle: 247.5 }, 
+    { nom: "1 lot bleu", minAngle: 157.5, maxAngle: 202.5 },   
+    { nom: "1 café offert", minAngle: 112.5, maxAngle: 157.5 }  
+];
 
 let indexGagnant = null
 
@@ -29,6 +33,7 @@ function getAngle(element) {
     if (matrix === "none") return 0;
     const [a, b] = matrix.match(/matrix\((.+)\)/)[1].split(",").map(Number)
     return ((Math.atan2(b, a) * 180 / Math.PI) + 360) % 360
+
 }
 
 form.addEventListener('submit', (e) => {
@@ -38,10 +43,11 @@ form.addEventListener('submit', (e) => {
     indexGagnant = tirage()
 
     const depart = getAngle(roulette)
-    const fin = depart + 360 * 5 + Math.random() * 360   
-
+    const angleLot = (lots[indexGagnant].minAngle + lots[indexGagnant].maxAngle) / 2
+    console.log(angleLot)
+    
     roulette.style.setProperty('--depart', depart + 'deg')
-    roulette.style.setProperty('--fin', fin + 'deg')
+    roulette.style.setProperty('--fin', (angleLot + 360 *5) + 'deg')
 
     roulette.classList.remove('rotate-slow', 'rotate-fast')
     void roulette.offsetWidth
@@ -52,12 +58,25 @@ roulette.addEventListener('animationend', (e) => {
     if (e.animationName !== 'spin-fast') return
 
     const angleFinal = getAngle(roulette)
-    console.log("Arrêtée à", angleFinal, "degrés - part tirée :", indexGagnant)
-    afficheLot.textContent = lots[indexGagnant].nom
-    dialog.showModal()
-    bouton.disabled = false
+    console.log(angleFinal)
+    if(lots[indexGagnant].nom === "Perdu"){
+        overlayTitre.textContent = "Mince..."
+        overlayTxt.textContent = "Vous avez perdu, revenez une prochaine fois."
+        dialog.showModal()
+        bouton.disabled = false
+    }else{
+        overlayTitre.textContent = "Félicitations !"
+        overlayTxt.textContent = "Vous avez gagné :"
+        afficheLot.textContent = lots[indexGagnant].nom
+        dialog.showModal()
+        bouton.disabled = false
+    }
+     
+
+    
 })
 
 btnClose.addEventListener('click', ()=>{
     dialog.close()
+    window.location.reload()
 })
