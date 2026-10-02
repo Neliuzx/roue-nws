@@ -1,0 +1,107 @@
+[
+  {
+    "date": "2026-10-01T12:06:51.943Z",
+    "mail": "test@mail.com",
+    "lot": "Perdu"
+  },
+  {
+    "date": "2026-10-01T12:29:11.029Z",
+    "mail": "test+4@mail.com",
+    "lot": "1 café offert"
+  },
+  {
+    "date": "2026-09-23T12:29:11.029Z",
+    "mail": "test+4@mail.com",
+    "lot": "1 café offert"
+  },
+  {
+    "date": "2026-09-24T12:29:11.029Z",
+    "mail": "test+4@mail.com",
+    "lot": "1 café offert"
+  },
+  {
+    "date": "2026-08-12T12:29:11.029Z",
+    "mail": "test+4@mail.com",
+    "lot": "1 café offert"
+  },
+  {
+    "date": "2026-09-12T12:29:11.029Z",
+    "mail": "test+4@mail.com",
+    "lot": "1 café offert"
+  },
+  {
+    "date": "2026-0112T12:29:11.029Z",
+    "mail": "test+4@mail.com",
+    "lot": "1 café offert"
+  },
+  {
+    "date": "2026-05-12T12:29:11.029Z",
+    "mail": "test+4@mail.com",
+    "lot": "1 café offert"
+  },
+  {
+    "date": "2025-05-09T12:29:11.029Z",
+    "mail": "test+4@mail.com",
+    "lot": "1 café offert"
+  },
+  {
+    "date": "2023-05-12T12:29:11.029Z",
+    "mail": "test+4@mail.com",
+    "lot": "1 café offert"
+  },
+  {
+    "date": "2021-05-12T12:29:11.029Z",
+    "mail": "test+4@mail.com",
+    "lot": "1 café offert"
+  },
+  {
+    "date": "2022-05-12T12:29:11.029Z",
+    "mail": "test+4@mail.com",
+    "lot": "1 café offert"
+  },
+  {
+    "date": "2026-10-02T07:02:13.898Z",
+    "mail": "test44@gmail.com",
+    "lot": "1 lot bleu"
+  },
+  {
+    "date": "2026-10-02T07:02:33.689Z",
+    "mail": "gcehce@mail.com",
+    "lot": "1 café offert"
+  },
+  {
+    "date": "2026-10-02T07:03:04.803Z",
+    "mail": "test+4@mail.com",
+    "lot": "Perdu"
+  },
+  {
+    "date": "2026-10-02T07:19:31.533Z",
+    "mail": "aassa@normandiewebschool.fr",
+    "lot": "1 café offert"
+  },
+  {
+    "date": "2026-10-02T07:20:54.093Z",
+    "mail": "test+4@normandiewebschool.fr",
+    "lot": "Perdu"
+  },
+  {
+    "date": "2026-10-02T07:21:15.071Z",
+    "mail": "gcehce'+'@normandiewebschool.fr",
+    "lot": "1 café offert"
+  },
+  {
+    "date": "2026-10-02T07:21:45.904Z",
+    "mail": "testr+4@normandiewebschool.fr",
+    "lot": "1 café offert"
+  },
+  {
+    "date": "2026-10-02T07:30:43.841Z",
+    "mail": "test@normandiewebschool.fr",
+    "lot": "Perdu"
+  },
+  {
+    "date": "2026-10-02T07:31:09.675Z",
+    "mail": "testttt@normandiewebschool.fr",
+    "lot": "1 lot bleu"
+  }
+]

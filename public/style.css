@@ -209,3 +209,66 @@ button:hover{
     from { opacity: 0; }
     to   { opacity: 1; }
 }
+
+.derniers-gagnants {
+    max-width: 1200px;
+    margin: 60px auto 40px;
+    padding: 0 24px;
+}
+
+.gagnants-titre {
+    margin: 0;
+    font-size: 28px;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+#gagnants {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#gagnants li {
+    display: grid;
+    grid-template-columns: 1.2fr 1.5fr 1fr;
+    gap: 16px;
+    align-items: center;
+    padding: 14px 4px;
+    border-bottom: 2px solid #e2e2e2;
+}
+
+.gagnant-lot {
+    font-size: 20px;
+    color: #00a5a5;
+}
+
+.gagnant-mail {
+    font-family: system-ui, sans-serif;
+    font-size: 15px;
+    color: #333;
+}
+
+.gagnant-date {
+    font-family: system-ui, sans-serif;
+    font-size: 13px;
+    color: #aaa;
+    text-align: right;
+}
+
+#gagnants .vide {
+    display: block;
+    font-family: system-ui, sans-serif;
+    color: #777;
+}
+
+@media (max-width: 800px) {
+    #gagnants li {
+        grid-template-columns: 1fr auto;
+    }
+
+    .gagnant-mail {
+        grid-column: 1 / -1;
+        order: 3;
+    }
+}

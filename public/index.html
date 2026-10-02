@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jeu NWS</title>
     <link rel="stylesheet" href="./style.css"/>
-    <script src="/index.js" defer></script>
+    <script src="script.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap" rel="stylesheet">
@@ -33,7 +33,11 @@
             </form>
         </div>
     </main>
-
+    <section class="derniers-gagnants">
+        <h2 class="gagnants-titre rouge">Derniers gagnants</h2>
+        <div class="line-title"></div>
+        <ul id="gagnants"></ul>
+    </section>
     <dialog id="overlay-lot" class="overlay-lot" >
         <h2 id="overlay-titre" class="rouge"></h2>
         <p id="overlay-texte"></p>
