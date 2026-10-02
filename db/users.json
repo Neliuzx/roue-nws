@@ -103,5 +103,21 @@
     "date": "2026-10-02T07:31:09.675Z",
     "mail": "testttt@normandiewebschool.fr",
     "lot": "1 lot bleu"
+  },
+  {
+    "date": "2026-10-02T07:52:14.610Z",
+    "mail": "aaaaaaa@normandiewebschool.fr",
+    "lot": "1 café offert"
+  },
+  {
+    "date": "2026-10-02T07:55:05.237Z",
+    "mail": "olllll@normandiewebschool.fr",
+    "lot": "Perdu"
+  },
+  {
+    "id": "69698fab-34d2-4a79-b90a-89520ff334ba",
+    "date": "2026-10-02T13:57:49.296Z",
+    "mail": ".@normandiewebschool.fr",
+    "lot": "1 lot bleu"
   }
 ]

@@ -1,0 +1,451 @@
+* {
+    box-sizing: border-box;
+    font-family: "Fugaz One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #f6f6f6;
+}
+
+.rouge {
+    color: #e94a34;
+}
+
+.line-title {
+    width: 60px;
+    height: 3px;
+    margin: 10px auto 0;
+    background-color: #e94a34;
+}
+
+.overlay-connexion {
+    width: min(420px, 90vw);
+    padding: 40px 32px;
+    border: none;
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.overlay-connexion[open] {
+    animation: overlay-apparition 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.overlay-connexion::backdrop {
+    background: rgba(20, 20, 20, 0.85);
+    backdrop-filter: blur(6px);
+    animation: backdrop-apparition 0.3s ease-out;
+}
+
+.form-connexion {
+    display: flex;
+    flex-direction: column;
+}
+
+.connexion-titre {
+    margin: 0;
+    font-size: 32px;
+    line-height: 1;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.connexion-sous-titre {
+    margin: 14px 0 28px;
+    font-family: system-ui, sans-serif;
+    font-size: 14px;
+    color: #777;
+    text-align: center;
+}
+
+.form-connexion label {
+    margin-bottom: 6px;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #333;
+}
+
+.form-connexion input {
+    height: 52px;
+    margin-bottom: 18px;
+    padding: 0 18px;
+    font-family: system-ui, sans-serif;
+    font-size: 16px;
+    background: #fff;
+    border: 2px solid #e2e2e2;
+    border-radius: 10px;
+    outline: none;
+    transition: border-color 0.15s;
+}
+
+.form-connexion input::placeholder {
+    color: #aaa;
+}
+
+.form-connexion input:focus {
+    border-color: #e94a34;
+}
+
+.form-connexion input.invalide {
+    border-color: #e94a34;
+    animation: secousse 0.3s;
+}
+
+.connexion-erreur {
+    margin: 0 0 14px;
+    font-family: system-ui, sans-serif;
+    font-size: 14px;
+    color: #e94a34;
+    text-align: center;
+}
+
+.connexion-erreur:empty {
+    display: none;
+}
+
+.form-connexion button {
+    height: 50px;
+    background-color: #e94a34;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: opacity 0.15s ease-in-out;
+}
+
+.form-connexion button:hover {
+    opacity: 0.9;
+}
+
+.form-connexion button:disabled {
+    opacity: 0.5;
+    cursor: wait;
+}
+
+.dashboard {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 24px;
+}
+
+.dashboard h1 {
+    text-transform: uppercase;
+}
+
+@keyframes overlay-apparition {
+    from { opacity: 0; transform: scale(0.8); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes backdrop-apparition {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes secousse {
+    0%, 100% { transform: translateX(0); }
+    25%      { transform: translateX(-6px); }
+    75%      { transform: translateX(6px); }
+}
+
+.bleu {
+    color: #00a5a5;
+}
+
+.jaune {
+    color: #fec800;
+}
+
+
+.dashboard[hidden] {
+    display: none;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.dashboard-header h1 {
+    margin: 0;
+    font-size: 36px;
+}
+
+.dashboard-header .line-title {
+    margin: 10px 0 0;
+}
+
+.btn-secondaire {
+    height: 44px;
+    padding: 0 20px;
+    background: transparent;
+    border: 2px solid #e94a34;
+    border-radius: 10px;
+    color: #e94a34;
+    font-size: 14px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.15s, color 0.15s;
+}
+
+.btn-secondaire:hover {
+    background-color: #e94a34;
+    color: #fff;
+}
+
+.dashboard-infos {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.first-line {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.stat-card,
+.panel {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+}
+
+.stat-card {
+    position: relative;
+    padding: 24px 28px;
+    overflow: hidden;
+}
+
+.stat-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 6px;
+    background-color: #e94a34;
+}
+
+.stat-card:nth-child(2)::before {
+    background-color: #00a5a5;
+}
+
+.stat-card:nth-child(3)::before {
+    background-color: #fec800;
+}
+
+.stat-label {
+    margin: 0 0 8px;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #777;
+}
+
+.stat-valeur {
+    margin: 0;
+    font-size: 44px;
+    line-height: 1;
+}
+
+.second-line {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    gap: 24px;
+    align-items: start;
+}
+
+.panel {
+    padding: 28px;
+}
+
+.panel-entete {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.panel-titre {
+    margin: 0 0 20px;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.panel-entete .panel-titre {
+    margin: 0;
+}
+
+.recherche {
+    width: min(260px, 100%);
+    height: 40px;
+    padding: 0 14px;
+    font-family: system-ui, sans-serif;
+    font-size: 14px;
+    border: 2px solid #e2e2e2;
+    border-radius: 10px;
+    outline: none;
+    transition: border-color 0.15s;
+}
+
+.recherche:focus {
+    border-color: #e94a34;
+}
+
+/* Répartition des lots */
+
+.liste-lots {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.lot-infos {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    font-size: 14px;
+}
+
+.lot-nombre {
+    color: #777;
+}
+
+.lot-barre {
+    height: 10px;
+    background: #f0f0f0;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.lot-barre span {
+    display: block;
+    height: 100%;
+    background-color: #00a5a5;
+    border-radius: inherit;
+    transition: width 0.6s ease-out;
+}
+
+.lot:nth-child(3n + 2) .lot-barre span {
+    background-color: #fec800;
+}
+
+.lot:nth-child(3n + 3) .lot-barre span {
+    background-color: #e94a34;
+}
+
+
+.tableau-wrapper {
+    max-height: 480px;
+    overflow: auto;
+}
+
+.tableau {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tableau th {
+    position: sticky;
+    top: 0;
+    padding: 12px 14px;
+    background: #fff;
+    border-bottom: 2px solid #e2e2e2;
+    font-size: 13px;
+    text-align: left;
+    text-transform: uppercase;
+    color: #777;
+}
+
+.tableau td {
+    padding: 12px 14px;
+    border-bottom: 1px solid #f0f0f0;
+    font-family: system-ui, sans-serif;
+    font-size: 14px;
+    color: #333;
+    white-space: nowrap;
+}
+
+.tableau tbody tr:hover {
+    background: #fafafa;
+}
+
+.badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.badge-gagne {
+    background: rgba(0, 165, 165, 0.12);
+    color: #008080;
+}
+
+.badge-perdu {
+    background: rgba(233, 74, 52, 0.12);
+    color: #c43a26;
+}
+
+.tableau-vide {
+    margin: 24px 0 0;
+    font-family: system-ui, sans-serif;
+    font-size: 14px;
+    color: #aaa;
+    text-align: center;
+}
+
+.tableau-wrapper:has(tbody tr) .tableau-vide {
+    display: none;
+}
+
+
+@media (max-width: 900px) {
+    .second-line {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .dashboard {
+        padding: 24px 16px;
+    }
+
+    .dashboard-header h1 {
+        font-size: 26px;
+    }
+
+    .first-line {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 16px;
+    }
+
+    .stat-valeur {
+        font-size: 36px;
+    }
+
+    .panel {
+        padding: 20px;
+    }
+
+    .panel-entete {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .recherche {
+        width: 100%;
+    }
+}

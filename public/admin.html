@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="admin.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="admin.js" defer></script>
+</head>
+<body>
+    <dialog id="overlay-connexion" class="overlay-connexion">
+        <form id="form-connexion" class="form-connexion">
+            <h2 class="connexion-titre">Connexion</h2>
+
+            <label for="identifiant">Identifiant</label>
+            <input type="text" id="identifiant" name="identifiant" placeholder="Votre identifiant" autocomplete="username" required>
+
+            <label for="mdp">Mot de passe</label>
+            <input type="password" id="mdp" name="mdp" placeholder="••••••••" autocomplete="current-password" required>
+
+            <p id="connexion-erreur" class="connexion-erreur" role="alert"></p>
+
+            <button type="submit" id="btn-connexion">Se connecter</button>
+        </form>
+    </dialog>
+
+    <main id="dashboard" class="dashboard" hidden>
+        <header class="dashboard-header">
+            <div>
+                <h1>Dashboard <span class="rouge">admin</span></h1>
+            </div>
+            <button type="button" id="btn-export" class="btn-secondaire">Exporter</button>
+        </header>
+
+        <section class="dashboard-infos">
+            <div class="first-line">
+                <article class="stat-card">
+                    <p class="stat-label">Participations</p>
+                    <p id="stat-participations" class="stat-valeur">0</p>
+                </article>
+                <article class="stat-card">
+                    <p class="stat-label">Lots gagnés</p>
+                    <p id="stat-gagnants" class="stat-valeur bleu"></p>
+                </article>
+                <article class="stat-card">
+                    <p class="stat-label">Utilisateurs</p>
+                    <p id="stat-taux" class="stat-valeur jaune">0</p>
+                </article>
+            </div>
+
+            <div class="second-line">
+                <article class="panel panel-lots">
+                    <h2 class="panel-titre">Répartition des lots</h2>
+                    <div>
+                        <canvas id="myChart"></canvas>
+                    </div>
+                </article>
+
+                <article class="panel panel-participations">
+                    <div class="panel-entete">
+                        <h2 class="panel-titre">Dernières participations</h2>
+                        <input type="search" id="recherche-mail" class="recherche" placeholder="Rechercher un mail…">
+                    </div>
+                    <div class="tableau-wrapper">
+                        <table class="tableau">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Mail</th>
+                                    <th>Lot</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableau-participations">
+                                <!-- Ligne générée par le JS :
+                                <tr>
+                                    <td>01/10/2026 14:06</td>
+                                    <td>test@mail.com</td>
+                                    <td><span class="badge badge-gagne">1 café offert</span></td>
+                                </tr>
+                                (ou <span class="badge badge-perdu">Perdu</span>)
+                                -->
+                            </tbody>
+                        </table>
+                        <p id="tableau-vide" class="tableau-vide">Aucune participation pour le moment.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

@@ -39,6 +39,7 @@ function sendJson(res, status, data) {
   res.end(JSON.stringify(data))
 }
 
+
 function readBody(req) {
   return new Promise((resolve, reject) => {
     let body = ''
@@ -52,10 +53,17 @@ function readBody(req) {
 }
 
 function serveStatic(req, res) {
-  const url = decodeURIComponent(req.url.split('?')[0])
+  let url
+  try {
+    url = decodeURIComponent(req.url.split('?')[0])
+  } catch {
+    res.writeHead(400)
+    return res.end('Requête invalide')
+  }
+
   const filePath = path.join(PUBLIC_DIR, url === '/' ? 'index.html' : url)
 
-  if (!filePath.startsWith(PUBLIC_DIR)) {
+  if (!filePath.startsWith(PUBLIC_DIR + path.sep)) {
     res.writeHead(403)
     return res.end('Interdit')
   }
@@ -69,10 +77,6 @@ function serveStatic(req, res) {
     res.writeHead(200, { 'Content-Type': type })
     res.end(content)
   })
-}
-
-function lastWin(){
-    console.log(db.getLastWin())
 }
 
 
@@ -104,25 +108,47 @@ async function jouer(req, res) {
     }
   }
 
-  if (mail.split('@')[1].toLowerCase() !== 'normandiewebschool.fr') {
-      return sendJson(res, 400, { erreur: "Adresse e-mail invalide." })
+  const [local, domaine] = mail.split('@')
+  if (domaine !== 'normandiewebschool.fr' || local.includes('+')) {
+    return sendJson(res, 400, { erreur: "Adresse e-mail invalide." })
   }
-  if (mail.split('@')[0].toLowerCase().includes('+')) {
-      return sendJson(res, 400, { erreur: "Adresse e-mail invalide." })
-  }
+
   const index = Math.floor(Math.random() * lots.length)
   db.add({ mail, lot: lots[index], date: new Date().toISOString() })
 
   sendJson(res, 200, { index, lot: lots[index] })
 }
 
+async function adminLogin(req, res) {
+  let username, password
+  try {
+    const body = JSON.parse(await readBody(req))
+    username = String(body.username || '')
+    password = String(body.password || '')
+  } catch {
+    return sendJson(res, 400, { erreur: "Requête invalide." })
+  }
 
+  if (!db.checkAdmin(username, password)) {
+    return sendJson(res, 401, { erreur: "Identifiants incorrects." })
+  }
+
+  sendJson(res, 200, { ok: true })
+}
 
 const server = http.createServer((req, res) => {
-  if (req.method === 'POST' && req.url === '/api/jouer') {
+  const pathname = req.url.split('?')[0]
+
+  if (req.method === 'POST' && pathname === '/api/jouer') {
     return jouer(req, res)
   }
-  if (req.method === 'GET' && req.url === '/api/gagnants') {
+  if (req.method === 'POST' && pathname === '/api/admin/login') {
+    return adminLogin(req, res)
+  }
+  if (req.method === 'GET' && pathname === '/api/admin/participations') {
+    return sendJson(res, 200, db.getAll())
+  }
+  if (req.method === 'GET' && pathname === '/api/gagnants') {
     return sendJson(res, 200, db.getLastWin())
   }
   if (req.method === 'GET') {
@@ -133,3 +159,11 @@ const server = http.createServer((req, res) => {
 })
 
 server.listen(PORT, () => console.log(`http://localhost:${PORT}`))
+
+
+//faire des inscriptions pendant les evenements 
+//lien d'invitations par étudiant avec limite de 5 personnes
+//faire l'environnement pour les events
+//solution possible: faire en sorte que les personnes ne puissent jouer uniquement sur place avec un mail créer spécifiquement pour l'event
+//envoyer un code unique par mail qui sera l'id de chaque étudiant (permanent) et un code d'evenements ou les gens joueront sur place
+//brevo
